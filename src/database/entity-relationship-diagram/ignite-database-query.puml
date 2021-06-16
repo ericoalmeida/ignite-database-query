@@ -1,0 +1,53 @@
+@startuml ignite
+
+Entity Genres {
+  id : uuid <<PK>>
+  title : string 
+  created_at: timestampz
+  updated_at: timestampz
+}
+
+Entity Games {
+  id : uuid <<PK>>
+  title : string 
+  created_at: timestampz
+  updated_at: timestampz
+}
+
+Entity Users {
+  id : uuid <<PK>>
+  title : string 
+  created_at: timestampz
+  updated_at: timestampz
+}
+
+Entity GameGenre {
+  id : uuid <<PK>>
+  gameId : uuid <<FK>>
+  genreId : uuid <<FK>>
+  created_at: timestampz
+  updated_at: timestampz
+}
+
+Entity Orders {
+  id : uuid <<PK>>
+  userId : uuid <<FK>>
+  created_at: timestampz
+  updated_at: timestampz
+}
+
+Entity OrderItems {
+  id : uuid <<PK>>
+  orderId : uuid <<FK>>
+  gameId : uuid <<FK>>
+  created_at: timestampz
+  updated_at: timestampz
+}
+
+GameGenre }|--|| Games
+GameGenre }|--|| Genres
+Orders ||--|| Users
+OrderItems }|--|| Orders
+OrderItems }|--|| Games
+
+@enduml
